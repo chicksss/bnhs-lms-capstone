@@ -1,0 +1,19 @@
+{
+  "name": "revised",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "dependencies": {
+    "apexcharts": "^3.50.0",
+    "flowbite": "^2.4.1"
+  },
+  "keywords": [],
+  "description": ""
+}
