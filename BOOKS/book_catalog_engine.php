@@ -75,19 +75,6 @@ public function SelectedUpdateBook($id) {
 }
 
 
-//book add copies
-
-// public function selectAddBookCopies($id) {
-//     $sql = "
-//         SELECT b.*, cps.*
-//         FROM books b
-//         JOIN copies cps ON b.id = cps.id
-//         WHERE cps.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $id]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
 
 public function selectAddBookCopies($id) {
     $sql = "
@@ -116,15 +103,6 @@ public function getBookCount(){
     return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
 }
 
-
-//total available
-
-
-// public function getBookAvailable(){
-//     $sql = "SELECT COUNT(*) as total FROM status WHERE status_name = 'Available'";
-//     $stmt = $this->connect()->query($sql);
-//     return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-// }
 
 //total notavailable
 public function getBookNotAvailable(){
@@ -159,14 +137,6 @@ public function allBorrowedCopies(){
 
 
  
-
-//copies select to update
-// public function selectUpdateBookCopy($id){
-//     $sql = "SELECT books.image FROM copies INNER JOIN books ON copies.book_id = books.id WHERE copies.id = :id";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $id]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
 public function selectUpdateBookCopy($id) {
     $sql = "SELECT books.*, copies.*
             FROM copies
@@ -176,19 +146,6 @@ public function selectUpdateBookCopy($id) {
     $stmt->execute(['id' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
-
-// public function selectAddBookCopies($id) {
-//     $sql = "
-//         SELECT cps.*, b.*
-//         FROM copies cps
-//        INNER JOIN books b ON cps.book_id = b.id
-//         WHERE b.id = :id;
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute([':id' => $id]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
-
 
 
 public function UpdatecopiesBooks($id,$statusPerCopy,$book_call_number){
@@ -213,23 +170,6 @@ public function getAllCpsBook($id){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-//  $sql = "
-//         SELECT books.*, authors.*,status.*, copies.*, copies.id, copies.book_call_number
-//         FROM books
-//         JOIN authors ON books.id = authors.id
-//         JOIN status ON books.id = status.id
-//         JOIN copies ON books.id = copies.id
-//         WHERE books.id = :id
-//     ";
-
-
-   // $sql = "SELECT c.*, a.author_name, s.status_name,b.* 
-    // FROM copies c 
-    // INNER JOIN authors a ON c.book_id = a.id  
-    // INNER JOIN status s ON c.book_id = s.id  
-    // INNER JOIN books b ON c.book_id = b.id
-    // WHERE c.id = :id  ";
     
 public function getBookDetails($bookId){
 
@@ -267,38 +207,6 @@ public function getAlAvaialble($bookId){
     return $result['available_copies'];
 }
 
-
-// public function getBorrowId($bookId){
-//     $sql = "
-//         SELECT copies.*, authors.*, status.*,books.*
-//         FROM copies
-//         JOIN authors ON copies.id = authors.id
-//         JOIN status ON copies.id = status.id
-//         JOIN copies ON copies.id = books.id
-//         WHERE copies.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $bookId]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
-
-//   $sql = "
-//         SELECT books.*, authors.*,status.*, copies.*, copies.id, copies.book_call_number
-//         FROM books
-//         JOIN authors ON books.id = authors.id
-//         JOIN status ON books.id = status.id
-//         JOIN copies ON books.id = copies.id
-//         WHERE books.id = :id
-//     ";
-
-// $sql = "
-//         SELECT books.*, authors.*,status.*, copies.*, copies.id, copies.book_call_number
-//         FROM books
-//         JOIN authors ON books.id = authors.id
-//         JOIN status ON books.id = status.id
-//         JOIN copies ON books.id = copies.book_id
-//         WHERE books.id = :id
-//     ";
     
 public function getBorrowId($bookId,$user_id,$selectedTable,$copy_id){
 
@@ -386,17 +294,6 @@ public function AddcopiesBooks($book_id,$no_of_copies,$book_call_number,$statusP
      
 }
 
-
-// $sql = 'INSERT INTO user (name,email) VALUES (:name,:email)';
-//         $stmt = $this->connect()->prepare($sql);
-//         return $stmt->execute(['name' => $name, 'email' => $email]);
-
-
-
-
-
-///update book
-
 public function updateBook($id,$title, $status_name,$book_date_published,$synopsis,$book_isbn,$publisher) {
     $this->connect()->beginTransaction();
 
@@ -433,50 +330,6 @@ public function updateBook($id,$title, $status_name,$book_date_published,$synops
 }
 
 
-//filter book 
-
-// public function selectedBook($categoryId){
-//    $sql = "
-//     SELECT b.*, s.*, c.category
-//     FROM books b
-//     INNER JOIN categories c ON b.category_id = c.id
-//     INNER JOIN status s ON b.id = s.id
-//     WHERE c.id = :id
-// ";
-
-// $stmt = $this->connect()->prepare($sql);
-// $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
-
-// public function selectedBookCPS($categoryId) {
-//     $sql = "
-//         SELECT 
-//             b.*, 
-//             a.author_name, 
-//             s.*, 
-//             c.category, 
-//             publishers.*, 
-//             COUNT(copies.book_id) AS totalCPs
-//         FROM books b
-        
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN book_authors ba ON b.id = ba.b_id
-//         INNER JOIN authors a ON ba.a_id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         INNER JOIN publishers ON b.id = publishers.id
-//         INNER JOIN copies ON b.id = copies.book_id
-//         WHERE c.id = :id
-//         GROUP BY b.id
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }  
-
-//FOR PAGINATION IN LIST OF BOOKS
 
 public function selectedBooksS($id, $offset, $limit) {
     // Your SQL query should include LIMIT and OFFSET
@@ -498,22 +351,6 @@ public function selectedBooksS($id, $offset, $limit) {
 }
 
 
-// public function selectedBooks($categoryId){
-//     $sql = "
-//         SELECT b.*, a.author_name, s.*, c.category, cps.id AS copy_id, COUNT(cps.id) AS totalCPS, cps.statusPerCopy 
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN authors a ON b.id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         LEFT JOIN copies cps ON b.id = cps.book_id AND cps.statusPerCopy = 'available'
-//         WHERE c.id = :id
-//         GROUP BY b.id 
-//         LIMIT :offset, :limit
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 
 public function countBooks($id) {
@@ -526,25 +363,6 @@ public function countBooks($id) {
 
 
 
-
-// public function homeselectedBook($categoryId){
-//     $sql = "
-//         SELECT b.*, a.author_name, s.*, c.category, publishers.*, cp.book_call_number
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN book_authors ba ON b.id = ba.b_id
-//         INNER JOIN authors a ON ba.a_id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         INNER JOIN publishers ON b.id = publishers.id
-//         INNER JOIN copies cp ON b.id = cp.book_id
-//         WHERE c.id = :id
-//         GROUP BY b.id
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 
 public function homeselectedBookAll(){
@@ -563,26 +381,6 @@ public function homeselectedBookAll(){
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-// public function homeselectedBook($categoryId){
-//     $sql = "
-//         SELECT b.*, a.author_name, s.*, c.category, publishers.*, cp.book_call_number
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN book_authors ba ON b.id = ba.b_id
-//         INNER JOIN authors a ON ba.a_id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         INNER JOIN publishers ON b.id = publishers.id
-//         INNER JOIN copies cp ON b.id = cp.book_id
-//         WHERE c.id = :id
-//         GROUP BY b.id
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
 
 
 //ALL COPIES IN DATABASE
@@ -614,86 +412,7 @@ public function homeselectedBook($categoryId){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// public function selectedBook($categoryId, $page, $recordsPerPage) {
-//     $offset = ($page - 1) * $recordsPerPage;
 
-//     $sql = "
-//         SELECT 
-//             b.*, 
-//             a.author_name, 
-//             s.*, 
-//             c.category, 
-//             publishers.*, 
-//             COUNT(copies.book_id) AS totalCPs
-//         FROM books b
-        
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN book_authors ba ON b.id = ba.b_id
-//         INNER JOIN authors a ON ba.a_id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         INNER JOIN publishers ON b.id = publishers.id
-//         INNER JOIN copies ON b.id = copies.book_id
-//         WHERE c.id = :id
-//         GROUP BY b.id
-//         LIMIT :offset, :recordsPerPage
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->bindValue(':id', $categoryId, PDO::PARAM_INT);
-//     $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-//     $stmt->bindValue(':recordsPerPage', $recordsPerPage, PDO::PARAM_INT);
-//     $stmt->execute();
-
-//     $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-//     // Count total records for pagination
-//     $totalRecords = $this->countTotalBooks($categoryId);
-
-//     // Calculate total pages
-//     $totalPages = ceil($totalRecords / $recordsPerPage);
-
-//    return [
-//     'books' => $books,
-//     'totalPages' => $totalPages,
-// ];
-
-// }
-
-// // Helper function to count total books for a category
-// private function countTotalBooks($categoryId) {
-//     $sql = "
-//         SELECT COUNT(DISTINCT b.id) AS total
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         WHERE c.id = :id
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//     return $result['total'];
-// }
-
-
-//  public function homeselectedBook($categoryId){
-//     $sql = "
-//         SELECT b.*, a.author_name, s.*, c.category, publishers.*, cp.book_call_number
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN book_authors ba ON b.id = ba.b_id
-//         INNER JOIN authors a ON ba.a_id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         INNER JOIN publishers ON b.id = publishers.id
-//         INNER JOIN copies cp ON b.id = cp.book_id
-//         WHERE c.id = :id
-//         GROUP BY b.id
-//     ";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $categoryId]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 
 
@@ -779,21 +498,7 @@ public function selectedBooks($categoryId){
 
 
 
-//select book to add copies
 
-// public function selectedBooktoAddCopie($id){
-//     $sql = "
-//         SELECT b.id, b.title, c.category, cps.id AS copy_id
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         LEFT JOIN copies cps ON b.id = cps.id
-//         WHERE c.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $id]);
-    
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 public function selectedBooktoAddCopie($id, $limit, $offset) {
     $sql = "
@@ -822,49 +527,9 @@ public function countBooksInCategory($id) {
 }
 
 
-// public function selectedBooksS($id, $offset, $limit) {
-//     // Your SQL query should include LIMIT and OFFSET
-//     $sql = "SELECT b.*, a.author_name, s.*, c.category, cps.id AS copy_id, COUNT(cps.id) AS totalCPS, cps.statusPerCopy 
-//         FROM books b
-//         INNER JOIN categories c ON b.category_id = c.id
-//         INNER JOIN authors a ON b.id = a.id
-//         INNER JOIN status s ON b.id = s.id
-//         LEFT JOIN copies cps ON b.id = cps.book_id AND cps.statusPerCopy = 'available'
-//         WHERE c.id = :id
-//         GROUP BY b.id 
-//         LIMIT :offset, :limit";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-//     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-//     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-//     $stmt->execute();
-//     return $stmt->fetchAll();
-// }
 
 
 
-
-
-//selectBooktoAddAuthor
-
-
-// public function selectedBooktoAddCopie($id){
-//     $sql = "
-//         SELECT b.*, c.category, cps.id
-//         FROM books  b
-//         INNER JOIN categories  c ON b.category_id = c.id
-//         LEFT JOIN copies  cps ON b.id = cps.id
-//         WHERE c.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $id]);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
-
-
-
-//get all number of copies
 
 public function getTotalBooks($categoryId) {
     $sql = "SELECT COUNT(*) AS total_books FROM books WHERE category_id = :categoryId";
@@ -891,17 +556,7 @@ public function getBookAvailable($categoryId){
 
 
 
-          
-
-// $user_password = $_POST['user_password'];
-//     $user_fullname = $_POST['user_fullname'];
-//     $user_address = $_POST['user_address'];
-//     $user_birth = $_POST['user_birth'];
-//     $user_contact = $_POST['user_contact'];
-//     $user_email = $_POST['user_email'];
-//     $user_gender = $_POST['user_gender'];
-
-
+  
 
 
 
@@ -988,12 +643,6 @@ public function GetAllAuthors(){
 }
 
 
-// public function GetAllAuthorsCount(){
-//     $sql = "SELECT COUNT(id) AS totalAuthorsnumber FROM authors";
-//     $stmt = $this->connect()->query($sql);
-//     $stmt->execute();
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);  
-// }
 
 public function GetAllBookss(){
     $sql = "SELECT * FROM books ORDER BY id DESC";
@@ -1085,46 +734,6 @@ public function createBook($title,$category_id,$status_name,$no_of_copies,$book_
 
 
 
-
-
-//  public function createBook($title,$category_id,$author_name,$status_name,$no_of_copies,$book_call_number) {
-//     try {
-//         // Insert into the books table
-//         $sql = "INSERT INTO books (title, category_id) VALUES (:title, :category_id)";
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-//         $stmt->bindParam(':category_id', $category_id, PDO::PARAM_STR);
-//         $stmt->execute();
-
-//         $bookId = $this->connect()->lastInsertId();
-
-//         $sql = "INSERT INTO authors (author_name) VALUES (:author_name)";
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->bindParam(':author_name', $author_name, PDO::PARAM_STR);
-//         $stmt->execute();
-
-//          $sql = "INSERT INTO status (status_name) VALUES (:status_name)";
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->bindParam(':status_name', $status_name, PDO::PARAM_STR);
-//         $stmt->execute();
-
-//          $sql = "INSERT INTO copies (no_of_copies,book_call_number) VALUES (:no_of_copies, :book_call_number)";
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->bindParam(':no_of_copies', $no_of_copies, PDO::PARAM_INT);
-//         $stmt->bindParam(':book_call_number', $book_call_number, PDO::PARAM_STR);
-//         $stmt->execute();
-        
-
-//         return true; // Success
-//     } catch (PDOException $e) {
-//         echo "Database error: " . $e->getMessage();
-//         return false; // Failure
-//     }
-// }
-
-
-//createAuthor($author)
-
    public function createAuthor($author_name,$book_author_id) {
     try {
         $sql = "INSERT INTO authors (author_name,book_author_id) VALUES (:author_name,:book_author_id)";
@@ -1150,38 +759,6 @@ public function bookStatus($status_name){
     }
 }
 
-
-
-// public function featuredBook() {
-//     try {
-//         $sql = "
-//             SELECT
-//                 b.*,
-//                 SUM(br.count) AS total_borrow_count,
-//                 a.author_name
-//             FROM
-//                 books b
-//             INNER JOIN
-//                 borrowings br ON b.id = br.count
-//             INNER JOIN
-//                 authors a ON b.id = a.id
-//             GROUP BY
-//                 b.id
-//             ORDER BY
-//                 total_borrow_count DESC
-//             LIMIT 1
-//         ";
-
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->execute();
-
-//         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     } catch (PDOException $e) {
-//         // Log the error or handle it appropriately
-//         echo "Error: " . $e->getMessage();
-//         return [];
-//     }
-// }
 
 
 public function featuredBook() {
@@ -2098,54 +1675,6 @@ public function appointmentGetBookId($selectedTable, $bookId, $user_id) {
         
     }
 
-//     public function appointmentGetBookId($selectedTable,$bookId,$user_id){
-//     try {
-//         $query = "SELECT * FROM books WHERE id = ?";
-//         $stmt = $this->connect()->prepare($query);
-//         $stmt->execute([$bookId]);
-        
-//         // Check if a row was found
-//         if ($stmt->rowCount() > 0) {
-//             return $stmt->fetch(PDO::FETCH_ASSOC);
-//         } else {
-//             return false; // No matching record found
-//         }
-//     } catch (PDOException $e) {
-//         // Handle any database errors here, e.g., log the error or throw an exception
-//         // You can customize this error handling based on your needs
-//         error_log("Database Error: " . $e->getMessage());
-//         return null; // Or throw an exception if you prefer
-//     }
-// }
-
-
-//     //list of all user appointments
-//      public function getAllMyAppointments($user_id){
-//         $sql = "SELECT * FROM $selectedTable WHERE user_id = :user_id";
-//         $stmt = $this->connect()->prepare($sql);
-//         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-//         $stmt->execute();
-//         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     }
-
-
-//     //   public function get_all_appoint(){
-//     //     $sql = "SELECT * FROM borrowings";
-//     //     $stmt = $this->connect()->prepare($sql);
-//     //     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-//     //     $stmt->execute();
-//     //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     // }
-
-
-
-
-//  //IncrementCountOfBook of copies of book
-
-// public function IncrementCountOfBook($book_number, $selectedTable) {
-//     $stmt = $this->connect()->prepare("UPDATE  SET no_of_copies = no_of_copies + 1 WHERE book_Id = ?");
-//     return $stmt->execute([$book_number]);
-// }
 
 
 //     // Increment the borrow count for the book
@@ -2185,39 +1714,12 @@ public function AddTotal_borrow_count($book_number, $total_borrow_count) {
 
 
 
-//     //update the book status if there is an appointment
-    // public function BookStatusSet($status,$bookId){
-    //     $stmt = $this->connect()->prepare("UPDATE books SET status_name = ? WHERE id = ?");
-    //     return $stmt->execute([$status, $bookId]);
-    // }
-
-// //     //update the number of copies in books
-// //    public function numberOfCopies($selectedTable, $no_of_copies, $bookId) {
-// //     $stmt = $this->connect()->prepare("UPDATE $selectedTable SET no_of_copies = no_of_copies - 1 WHERE book_Id = ?");
-// //      return $stmt->execute([$no_of_copies, $bookId]);
-// //     }
-
 
 //     // Update the count in the borrowings table based on borrowing date
     public function UpdateCountBorrowings($borrowingDate){
         $stmt = $this->connect()->prepare("UPDATE borrowings SET count = count + 1 WHERE borrowing_date = ?");
         return $stmt->execute([$borrowingDate]);
     }
-
-//     //update the expiration of appointment
-// //     public function expirationAppointment($days) {
-// //    $stmt = $this->connect()->prepare("UPDATE appointments.borrowings SET appointmentDate = DATE_SUB(?, INTERVAL 1 DAY)");
-// //    return $stmt->execute([$days]);
-// //}
-
-//    public function expirationAppointment($days) {
-//     // Calculate the number of seconds for the given number of days
-//     $secondsToSubtract = $days * 24 * 60 * 60;
-
-//     // Subtract the calculated seconds from the appointmentDate in the database
-//     $stmt = $this->connect()->prepare("UPDATE appointments.borrowings SET appointmentDate = appointmentDate - ? WHERE appointmentDate >= ?");
-//     return $stmt->execute([$secondsToSubtract, time()]);
-// }
 
 
 //        //borrowdate
@@ -2235,52 +1737,6 @@ public function AddTotal_borrow_count($book_number, $total_borrow_count) {
         return $stmt->execute([$generateId, $book_number, $borrowerName, $borrowingDate, $book_title, $book_author, $borrower_address, $borrower_email, $status, $user_id,$dueDate,$book_call_number,$category_id,$book_Id,$copy_id]);
     }
 
-
-
-//     //join apointment in books
-
-//   public function userListBorrowed($selectedCategory) {
-//     $otherDatabase = 'books';
-//     $sql = "SELECT enduser.users.user_id, $otherDatabase.$selectedCategory.title, $otherDatabase.$selectedCategory.status 
-//             FROM enduser.users 
-//             INNER JOIN $otherDatabase.$selectedCategory ON enduser.users.user_fullname = $otherDatabase.$selectedCategory.book_Id 
-//             ORDER BY enduser.users.user_id DESC";
-
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute();
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
- 
-
-// public function getBookOverview($bookId){
-//     $sql = "
-//         SELECT 
-//             books.*, 
-//             authors.*, 
-//             status.*, 
-//             borrowings.*, 
-//             COUNT(borrowings.book_Id) AS borrow_count, 
-//             users.*
-//         FROM 
-//             books
-//         JOIN 
-//             authors ON books.id = authors.id
-//         JOIN 
-//             status ON books.id = status.id
-//         LEFT JOIN 
-//             borrowings ON books.id = borrowings.book_Id
-//         LEFT JOIN 
-//             users ON borrowings.user_id = users.user_id
-//         WHERE 
-//             books.id = :id
-//         GROUP BY 
-//             books.id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $bookId]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
 
 
 
@@ -2327,15 +1783,6 @@ public function AllCpsINBooks(){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-// public function Alllistofthebook(){
-//     $sql = "
-//        SELECT * FROM books;
-//     ";
-//     $stmt = $this->connect()->query($sql);
-//     $stmt->execute();
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 
 public function Alllistofthebook() {
@@ -2401,36 +1848,6 @@ public function getBookOverview($bookId){
 
 
 
-// public function getBookOverview($bookId){
-//       $sql = "
-//         SELECT books.*, authors.*,status.*
-//         FROM books
-//         JOIN authors ON books.id = authors.id
-//         JOIN status ON books.id = status.id
-       
-//         WHERE books.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $bookId]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
-
-// //gettotalborrowedperBook
-// public function gettotalborrowedperBook($selectedTable,$bookId,$user_id){
-//      $sql = "
-//         SELECT books.*, authors.*,status.*,borrowings.* COUNT(borrowings.book_Id)
-//         FROM books
-//         JOIN authors ON books.id = authors.id
-//         JOIN status ON books.id = status.id
-//         JOIN borrowings ON borrowings.book_Id = user_Id
-//         WHERE books.id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute(['id' => $bookId]);
-//     return $stmt->fetch(PDO::FETCH_ASSOC);
-// }
-
-
 public function CountInnerJoinBookArchive() {
     try {
         $sql = "SELECT COUNT(id) as BookArchiveId FROM archives";
@@ -2445,28 +1862,6 @@ public function CountInnerJoinBookArchive() {
 }
 
  
-
-//BOOK REPORT FOR ALL BOOKS 
-// public function getAllBookReport(){
-//     $sql = 'SELECT * FROM books';
-//     $stmt = $this->connect()->query($sql);
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-   
-// }
-
-
-
-// public function getBookAuthors($id){
-//     $sql = "
-//         SELECT ba.*, a.author_name 
-//         FROM book_authors ba 
-//         INNER JOIN authors a ON ba.a_id = a.id 
-//         WHERE ba.b_id = :id
-//     ";
-//     $stmt = $this->connect()->prepare($sql);
-//     $stmt->execute([':id' => $id]); // Use ':id' instead of 'id'
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
 
 
 
