@@ -128,26 +128,26 @@
                     <ul id="dropdown-example-in-users" class="hidden py-2 space-y-2">
                         <li>
                             <a href="../BOOKS/admin_add_book.php"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group">Add
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-dark dark:hover:bg-gray-700">Add
                                 Book</a>
                         </li>
                         <li>
                             <a href="../BOOKS/admin_Add_moreAuthors.php"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group">Book
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-dark dark:hover:bg-gray-700">Book
                                 Authors</a>
                         </li>
                         <li>
                             <a href="../BOOKS/admin_AddCopies_Book.php"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group">Copies</a>
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-dark dark:hover:bg-gray-700">Copies</a>
                         </li>
                         <li>
                             <a href="../BOOKS/admin_bookList.php"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group">List
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-dark dark:hover:bg-gray-700">List
                                 of Books</a>
                         </li>
                         <li>
                             <a href="../BOOKS/admin_book_archive.php"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group">Archive</a>
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-dark dark:hover:bg-gray-700">Archive</a>
                         </li>
                     </ul>
                 </li>
