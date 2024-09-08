@@ -81,10 +81,10 @@ $tables = $crud->bookListQuery();
                         <a href="../HOMEPAGE/homepage_catalog.php" class="text-gray-900 dark:text-dark hover:underline"
                             aria-current="page">Home</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="user_manual.php" class="text-gray-900 dark:text-dark hover:underline">
                             User Manual</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="../HOMEPAGE/homepage_bookmark.php"
                             class="text-gray-900 dark:text-dark hover:underline">Bookmark</a>
