@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     <div class="ml-52">
         <div class="absolute mt-[-40px]">
-            <h1 class="text-2xl font-bold px-3">ADMIN</h1>
+            <h1 class="text-2xl font-bold px-3">SUPER ADMIN</h1>
         </div>
 
 

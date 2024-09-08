@@ -60,6 +60,9 @@ ob_end_flush();
 
 
     <div class="ml-52 p-2">
+    <div class="absolute mt-[-55px]">
+            <h1 class="text-2xl font-bold px-3">BOOK COPIES</h1>
+        </div>
 
         <div class="flex justify-start gap-10 px-10 py-2">
             <?php if($result){ ?>
