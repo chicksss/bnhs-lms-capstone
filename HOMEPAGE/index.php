@@ -325,11 +325,11 @@ if(isset($_POST['login'])){
                         $allResults = $crud->featuredBook(); 
                         foreach ($allResults as $res) {
                             ?>
-                    <div>
+                    
                         <img src="../BOOKS/book/<?php echo $res['image']; ?>" title="<?php echo $res['image']; ?>"
-                            class="img-bookFeatured" style="width:300px; height:400px">
+                            class="h-96 w-96" >
 
-                    </div>
+                     
 
                     <div class="">
                         <h3 class="font-bold text-2xl py-2">

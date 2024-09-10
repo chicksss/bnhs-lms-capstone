@@ -139,7 +139,7 @@ if(isset($_POST['login'])){
         </div>
     </nav>
 
-    <nav class="bg-[#e6ccb2] shadow-lg mt-[58px] w-full fixed">
+    <nav class="bg-[#e6ccb2] shadow-lg  mt-[58px] w-full fixed">
         <div class="max-w-screen-xl px-4 py-3 mx-auto">
             <div class="flex items-center">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm md:ml-20 md:text-lg">
@@ -158,7 +158,7 @@ if(isset($_POST['login'])){
     </nav>
 
     <div id="default-modal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 w-96  z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow text-black ">
@@ -180,7 +180,7 @@ if(isset($_POST['login'])){
                 </div>
 
 
-                <form class="max-w-sm mx-auto p-5" method="POST" action="homepage_books.php">
+                <form class="max-w-sm mx-auto  p-5" method="POST" action="homepage_books.php">
 
                     <div class="mb-5">
 
