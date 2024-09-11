@@ -88,7 +88,7 @@ ob_end_flush();
     <div class="ml-52 p-2">
         <div class="absolute mt-[-50px]">
             <h1 class="text-2xl font-bold px-3">ADD BOOK</h1>
-            
+
         </div>
         <form method="POST" action="admin_Add_book.php" enctype="multipart/form-data">
             <input type="hidden" name="admin_id" value="<?php  echo $_SESSION['admin_Id']; ?>" id="">
@@ -220,33 +220,59 @@ ob_end_flush();
                 <div class="w-[600px]">
                     <label for="small-input" class="block text-sm font-medium font-black">Add Book Cover:</label>
                     <input type="file" class="form-control-sm" name="image" id="image" accept=".jpg, .jpeg, .png"
-                        value="Add Book Cover" required>
-
-
+                        value="Add Book Cover">
+                    <button id="btn" type="button">Default Image</button>
                     <img alt="" style="" class="w-96 h-96 shadow-lg" id="imagePreview">
-
-
-
                 </div>
 
+
                 <script>
-                window.addEventListener('DOMContentLoaded', () => {
-                    const image = document.getElementById('imagePreview');
-                    const input = document.getElementById('image');
+                const defaultImage = '../images/lis.jpg'; // Your default image path
+                const button = document.getElementById('btn');
+                const imagePreview = document.getElementById('imagePreview');
+                const input = document.getElementById('image');
 
-                    input.addEventListener('change', (e) => {
-                        if (e.target.files && e.target.files[0]) {
-                            const reader = new FileReader();
+                // Set default image when button is clicked
+                button.addEventListener('click', () => {
+                    imagePreview.src = defaultImage; // Set the image source to default
+                    imagePreview.style.display = 'block'; // Make sure the image is visible
+                    input.value = ''; // Clear the file input to ensure no file is selected
+                });
 
-                            reader.onload = (event) => {
-                                image.src = event.target.result;
-                            };
+                // Update image preview when a new file is uploaded
+                input.addEventListener('change', (e) => {
+                    if (e.target.files && e.target.files[0]) {
+                        const reader = new FileReader();
 
-                            reader.readAsDataURL(e.target.files[0]);
-                        }
-                    });
+                        reader.onload = (event) => {
+                            imagePreview.src = event.target.result; // Set the uploaded image as the preview
+                            imagePreview.style.display = 'block'; // Make sure the image is visible
+                        };
+
+                        reader.readAsDataURL(e.target.files[0]);
+                    }
                 });
                 </script>
+
+                <!-- <script>
+
+                        window.addEventListener('DOMContentLoaded', () => {
+                            const image = document.getElementById('imagePreview');
+                            const input = document.getElementById('image');
+
+                            input.addEventListener('change', (e) => {
+                                if (e.target.files && e.target.files[0]) {
+                                    const reader = new FileReader();
+
+                                    reader.onload = (event) => {
+                                        image.src = event.target.result;
+                                    };
+
+                                    reader.readAsDataURL(e.target.files[0]);
+                                }
+                            });
+                        });
+                </script> -->
             </div>
 
 

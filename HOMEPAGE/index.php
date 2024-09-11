@@ -317,70 +317,68 @@ if(isset($_POST['login'])){
 
 
             <div class="px-10">
-                <h1 class="font-['Cedarville-Cursive'] text-3xl ml-[160px] py-3  font-bold">Featured Book</h1>
+    <h1 class="font-['Cedarville-Cursive'] text-3xl ml-[160px] py-3 font-bold">Featured Book</h1>
 
-                <div class="flex grid-cols-2 justify-center gap-10 px-[150px]">
+    <div class="flex justify-center gap-10 px-[150px]">
+        <?php 
+            $allResults = $crud->featuredBook(); 
+            foreach ($allResults as $res) {
+        ?>
+         
+            <img src="../BOOKS/book/<?php echo $res['image']; ?>" alt="Book cover" 
+                 class="w-96 h-96" title="<?php echo $res['image']; ?>">
+         
 
-                    <?php 
-                        $allResults = $crud->featuredBook(); 
-                        foreach ($allResults as $res) {
-                            ?>
-                    <div>
-                        <img src="../BOOKS/book/<?php echo $res['image']; ?>" title="<?php echo $res['image']; ?>"
-                            class="img-bookFeatured" style="width:300px; height:400px">
+        <div class="w-78">
+            <h3 class="font-bold text-2xl py-2">
+                <?php echo $res['title']; ?>
+            </h3>
+            <p class="text-1xl py-2">by: <?php echo $res['author_name']; ?></p>
 
-                    </div>
+            <p class="textAll text-1xl py-3" id="synopsis_<?php echo $res['id']; ?>"
+                style="color: black; text-align: justify; text-justify: inter-word; overflow: hidden; max-height: 200px;">
+                &nbsp;<?php echo $res['synopsis']; ?>
+            </p>
+            <p id="seeMore_<?php echo $res['id']; ?>" style="color: blue; cursor: pointer; display: none;">See more...</p>
 
-                    <div class="">
-                        <h3 class="font-bold text-2xl py-2">
-                            <?php echo $res['title'] ?></h3>
-                        <p class="text-1xl py-2">by: <?php echo $res['author_name'] ?></p>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var synopsis = document.getElementById('synopsis_<?php echo $res['id']; ?>');
+                var seeMore = document.getElementById('seeMore_<?php echo $res['id']; ?>');
 
-                        <p class="textAll text-1xl py-3" id="synopsis"
-                            style="color: black; text-align: justify; text-justify: inter-word; width: 100%; overflow: hidden; max-height: 200px;">
+                if (synopsis.scrollHeight > synopsis.clientHeight) {
+                    seeMore.style.display = 'block';
 
-                            &nbsp;<?= $res['synopsis']; ?></p>
-                        <p id="seeMore" style="color: blue; cursor: pointer; display: none;">See more...</p>
-                        <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var synopsis = document.getElementById('synopsis');
-                            var seeMore = document.getElementById('seeMore');
+                    seeMore.addEventListener('click', function() {
+                        synopsis.style.maxHeight = 'none';
+                        seeMore.style.display = 'none';
+                    });
+                }
+            });
+            </script>
 
-                            // Check if the synopsis height is greater than the maximum height (100px in this example)
-                            if (synopsis.scrollHeight > synopsis.clientHeight) {
-                                seeMore.style.display = 'block';
+            <b>This edition</b>
 
-                                seeMore.addEventListener('click', function() {
-                                    synopsis.style.maxHeight = 'none';
-                                    seeMore.style.display = 'none';
-                                });
-                            }
-                        });
-                        </script>
+            <div class="flex gap-10 py-5">
+                <div>
+                    <b>ISBN:</b><br>
+                    <b>Publisher:</b><br>
+                    <b>Date Published:</b><br>
+                    <b>Total Borrowed:</b><br>
+                </div>
 
-
-                        <b>This edition</b>
-
-                        <div class="flex gap-10 py-5">
-                            <div>
-                                <b>ISBN:</b> <br>
-                                <b>Publisher:</b> <br>
-                                <b>Date Published:</b> <br>
-                                <b>Total Borrowed:</b> <br>
-                            </div>
-
-                            <div>
-                                <?php echo $res['book_isbn'] ?><br>
-                                <?php echo $res['publisher'] ?><br>
-                                <?php echo $res['book_date_published'] ?><br>
-                                <?php echo $res['borrow_count'] ?> <br>
-                            </div>
-                        </div>
-
-                    </div>
-                    <?php } ?>
+                <div>
+                    <?php echo $res['book_isbn']; ?><br>
+                    <?php echo $res['publisher']; ?><br>
+                    <?php echo $res['book_date_published']; ?><br>
+                    <?php echo $res['borrow_count']; ?><br>
                 </div>
             </div>
+        </div>
+        <?php } ?>
+    </div>
+</div>
+
 
 
             <!-- <div class="px-[150px] py-5" id="about">

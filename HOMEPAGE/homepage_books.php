@@ -164,6 +164,8 @@ if (isset($_GET['table']) && isset($_GET['id'])&& isset($_GET['user_id'])) {
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow text-black ">
                 <!-- Modal header -->
+
+              
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-black">
                         Sign in
@@ -204,6 +206,9 @@ if (isset($_GET['table']) && isset($_GET['id'])&& isset($_GET['user_id'])) {
                         in</button>
                 </form>
 
+                <div class="text-center mt-10 py-5">
+                <i>Note: if you dont have account you must contact the librarian to create your account:</i>
+                </div>
             </div>
         </div>
     </div>

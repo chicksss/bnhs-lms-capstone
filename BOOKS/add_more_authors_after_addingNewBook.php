@@ -38,10 +38,6 @@ $result = $myAuthors->selectAddBoolAuthors($id);
 }
 
 
-
- 
-
-
 if (isset($_POST['adbook'])) {
 $b_id = $_POST['b_id'];
 $selected_authors = isset($_POST['selected_authors']) ? $_POST['selected_authors'] : [];

@@ -418,14 +418,14 @@ public function homeselectedBook($categoryId){
 
 
 public function getLastBook(){
-    $sql = "SELECT title FROM books ORDER BY id DESC LIMIT 1;";
+    $sql = "SELECT image, title FROM books ORDER BY id DESC LIMIT 1;";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 public function getAllBooksInCat(){
-    $sql = "SELECT id, title ,image FROM books ORDER BY id DESC LIMIT 1;";
+    $sql = "SELECT id, title, image FROM books ORDER BY id DESC LIMIT 1;";
     $stmt = $this->connect()->query($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

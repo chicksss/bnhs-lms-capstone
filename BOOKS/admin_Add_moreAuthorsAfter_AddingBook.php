@@ -67,13 +67,19 @@ if ($id !== null) {
                 <div class="py-3">
                     <?php   $result = $crud->getLastBook();
                            if ($result) {  ?>
+
                     <div class="flex justify-start items-center">
-                        <b clas="text-xs">Add Authors in this book:&nbsp;&nbsp;&nbsp; </b>
-                        <input type="text" class="rounded-lg w-[200px]" id="myInputs" onkeyup="myFunctiongetSpebook()"
+
+                        <input type="hidden" class="rounded-lg w-[200px]" id="myInputs" onkeyup="myFunctiongetSpebook()"
                             placeholder="Search for books.." value="<?php echo htmlspecialchars($result['title']); ?>"
                             title="Type Author">
 
+
+
                     </div>
+                    <!-- <img src="../BOOKS/book/<?php echo $result['image']; ?>" alt="Book cover" 
+                    class="w-96 h-96" title="<?php echo $result['image']; ?>"> -->
+                    <br>
 
                     <?php    } else { ?>
                     <p>No book found</p>
@@ -81,16 +87,36 @@ if ($id !== null) {
                 </div>
 
             </div>
-            <div>
+            <script>
+            window.onload = function() {
+                const addButton = document.getElementById('autoClickAdd'); // Select the button
+                if (addButton) {
+                    addButton.click(); // Auto-click the button
+                }
+            };
+            </script>
+            <div class="flex justify-start gap-10 mt-10">
                 <?php $result = $crud->getAllBooksInCat(); ?>
 
                 <?php foreach ($result as $book) : ?>
                 <?php  if ($book) {  ?>
+                <div>
+                    <i>Note: you need to add a author in book</i>
+                    <img src="../BOOKS/book/<?php echo $book['image']; ?>" alt="Book cover" class="w-96 h-96"
+                        title="<?php echo $book['image']; ?>">
+                </div>
 
-                <button class="bg-[#d4a373] px-4 py-2 rounded-lg">
-                    <a href="BOOK_ADD_AUTHORS.php?id=<?php echo $book['id']; ?>">
-                        <p>Add</p>
-                    </a>
+
+                <div>
+              
+                    <h2 class="text-2xl">Add authors in this book: </h2>
+                    <br>
+                    <button class="bg-[#d4a373] px-4 py-2 rounded-lg" id="autoClickAdd">
+                        <a href="BOOK_ADD_AUTHORS.php?id=<?php echo $book['id']; ?>">
+                            <p>Add</p>
+                        </a>
+                </div>
+
 
                 </button>
 
@@ -98,6 +124,9 @@ if ($id !== null) {
                 <?php endforeach; ?>
             </div>
         </div>
+
+
+
 
 
 

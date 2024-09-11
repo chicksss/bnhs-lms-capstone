@@ -75,12 +75,12 @@ $join = $crud->InnerJoinBook();
 
 
     <div class="ml-52 p-2">
-    <div class="absolute mt-[-55px]">
+        <div class="absolute mt-[-55px]">
             <h1 class="text-2xl font-bold px-3">ADD COPIES</h1>
         </div>
         <div class="row"
             style="background-color:white; margin-top:10px; width: 68.7rem; padding:10px; margin-left:20px">
- 
+
             <!-- 
 
         <?php
@@ -147,11 +147,11 @@ if ($id !== null) {
 
     if (!empty($result)) {
         ?>
-             <table class="w-full text-xl px-5 text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr class="text-lg py-3">
-                    <th class="px-6 py-3">Title</th>
-                    <th class="px-6 py-3">Add Copies</th>
+            <table class="w-full text-xl px-5 text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="text-lg py-3">
+                        <th class="px-6 py-3">Title</th>
+                        <th class="px-6 py-3">Add Copies</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -198,13 +198,11 @@ if ($id !== null) {
     } 
 } else { 
     ?>
-                <table class="w-full text-xl px-5 text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr class="text-lg py-3">
-                    <th class="px-6 py-3">Title</th>
-                    <th class="px-6 py-3">Add Copies</th>
-                    </tr>
-                </thead>
+
+
+
+            <!-- <table class="w-full text-xl px-5 text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                
                 <tbody>
                     <?php $result = $crud->getAllBooksInCat(); ?>
 
@@ -213,9 +211,9 @@ if ($id !== null) {
                     <tr>
                         <td><?= substr($j['title'], 0, 80); ?><?= strlen($j['title']) > 30 ? '...' : ''; ?></td>
                         <td>
-                            <a href="book_AddCopiesAFTERADDINGAUTHOR.php?id=<?= $j['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                    class="size-6">
+                            <a href="book_AddCopiesAFTERADDINGAUTHOR.php?id=<?= $j['id']; ?>"><svg
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12  10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                 </svg>
@@ -226,7 +224,26 @@ if ($id !== null) {
                 }
                 endforeach; ?>
                 </tbody>
-            </table>
+            </table> -->
+
+            <div class="flex justify-start gap-5">
+                <?php foreach ($result as $j): ?>
+                <?php  if ($j) {  ?>
+                <img src="../BOOKS/book/<?php echo $j['image']; ?>" alt="Book cover" class="w-96 h-96"
+                    title="<?php echo $j['image']; ?>">
+                <?php
+                }
+            endforeach; ?>
+                <div>
+                    <h2>
+                        Proceed to add copies?
+                    </h2>
+                <button class="bg-[#d4a373] px-4 py-2 rounded-lg" id="autoClickAdd">
+                    <a href="book_AddCopiesAFTERADDINGAUTHOR.php?id=<?= $j['id']; ?>">Add Copies
+                    </a>
+                </button>
+                </div>
+            </div>
             <?php 
 } 
 ?>

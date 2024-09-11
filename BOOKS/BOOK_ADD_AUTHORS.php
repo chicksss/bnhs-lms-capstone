@@ -80,7 +80,7 @@ ob_end_flush();
         </div>
 
 
-        <i class=" flex justify-center">If you want to add copies you can proceed to <a href="admin_AddCopies_BookAfterAddAuthor.php" class="underline"> "Add copies"</a></i>
+        <i class=" flex justify-center">If you are done adding authors you can now proceed to add copies <a href="admin_AddCopies_BookAfterAddAuthor.php" class="underline"> "Add copies"</a></i>
 
         <!-- Main modal -->
         <div id="default-modal" tabindex="-1" aria-hidden="true"
@@ -130,6 +130,22 @@ ob_end_flush();
 
 
         <div class="flex justify-evenly px-10 gap-2 py-3">
+        <div class="card rounded-lg">
+                <?php if ($result): ?>
+                <div class="grid gap-3">
+                    <div class="bg-[#d5bdaf] px-[-20px] p-2">
+                    <p
+                    class="title_book"><?= substr($result['title'], 0, 30); ?><?= strlen($result['title']) > 30 ? '...' : ''; ?></p>
+                        <!-- <p  class="w-54 text-clip overflow-hidden">Book: <?php echo $result['title']; ?></p> -->
+                    </div>
+                    <div class="">
+                        <img src="../BOOKS/book/<?php echo $result['image']; ?>" title="<?php echo $result['image']; ?>"
+                            class="h-[400px] w-[300px] rounded-lg shadow-lg">
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+
             <div class="card rounded-lg p-0 ">
                 <div class="bg-[#d5bdaf] px-[-20px] p-2">
                     <label for="author" class="py-2" style="font-weight: 900; color: black">Select Author
@@ -160,8 +176,8 @@ ob_end_flush();
                             <?php
                                 $listA = $crud->GetAllAuthors();
                                  foreach ($listA as $author): ?>
-                            <div class="author-row flex justify-between mx-2">
-                                <div class="author-name p-2">
+                            <div class="author-row flex justify-between mx-2 border border 2">
+                                <div class="author-name p-2 ">
                                     <p class="text-xl text-left"><?php echo $author['author_name']; ?></p>
                                 </div>
                                 <div class="author-id  p-2" data-id="<?php echo $author['id']; ?>">
@@ -246,22 +262,7 @@ ob_end_flush();
                 </form>
                 <?php endif; ?>
             </div>
-            <div class="card rounded-lg">
-                <?php if ($result): ?>
-                <div class="grid gap-3">
-                    <div class="bg-[#d5bdaf] px-[-20px] p-2">
-                        <label for="" class="text-1xl font-bold">Book: <?php echo $result['title']; ?></label>
-                    </div>
-                    <div class="">
-                        <img src="../BOOKS/book/<?php echo $result['image']; ?>" title="<?php echo $result['image']; ?>"
-                            class="h-[450px] w-[350px] rounded-lg shadow-lg">
-                    </div>
-                </div>
-                <?php endif; ?>
-
-
-
-            </div>
+           
 
             <div class="card rounded-lg w-[200px]">
                 <div class="bg-[#d5bdaf] px-[-20px] p-2 py-2">
