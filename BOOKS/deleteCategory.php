@@ -50,19 +50,35 @@ ob_end_flush(); // Flush the output buffer and turn off output buffering
 <body>
 
     <div class="ml-52 p-2 px-5">
+
+    <div class="absolute mt-[-50px]">
+            <h1 class="text-2xl font-bold px-3">DELETE CATEGORY</h1>
+
+        </div>
         <?php if($result){ ?>
 
         <form method="POST" action="deleteCategory.php">
             <h5 class="text-2xl text-center ">Delete Category?</h5>
-            <div class="form-group flex grid-cols-1 justify-center py-2">
+            <div class="form-group flex grid-cols-1 justify-center py-2 gap-5">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($result['id']); ?>">
                 <button type="submit" class="p-2 rounded-lg bg-[#DDA15E]" style="background-color: #DDA15E"
                     name="deleteCat" value="Create Section">
                     Delete </button>
+
+                   
             </div>
         </form>
 
         <?php } ?>
+
+       <div class="flex justify-center">
+       <button onclick="goBack()" class="btn-back bg-[#dda15e] p-2 rounded-lg px-10">Back</button>
+        <script>
+        function goBack() {
+            window.history.back("");
+        }
+</script>
+       </div>
 
     </div>
 

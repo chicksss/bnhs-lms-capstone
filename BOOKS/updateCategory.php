@@ -1,5 +1,5 @@
 <?php
- 
+ ob_start();
 require_once "../DATABASE/book_catalog_db.php";
 require_once "book_catalog_engine.php";
 include "../dashdesign.php";
@@ -28,6 +28,9 @@ if(isset($_POST['updateCat'])){
     $crud->updateCategory($id,$category);
     header("Location: admin_book_home.php");
 }
+
+
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
@@ -45,23 +48,47 @@ if(isset($_POST['updateCat'])){
 
 
 
-    <title>Document</title>
+    <title>UPDATE CATEGORY</title>
 </head>
 
 <body>
 
 
     <div class="ml-52 p-2 px-5">
+    <div class="absolute mt-[-50px]">
+            <h1 class="text-2xl font-bold px-3">UPDATE CATEGORY</h1>
+
+        </div>
+
+        <div class="flex justify-between">
+
+        <div>
         <?php if($result){ ?>
+            <form action="updateCategory.php" method="POST">
         <div class="form-group">
             <input type="hidden" name="id" value="<?= htmlspecialchars($result['id']); ?>">
             <label for="category" style="color:black">Update Category:</label>
-            <input type="text" class="form-control" placeholder="Enter Book Section" name="category" id="category"
+            <input type="text" class="rounded-lg px-6 py-2" placeholder="Enter Book Section" name="category" id="category"
                 value="<?php echo $result['category'] ?>" required>
         </div> <br>
-        <input type="submit" class="btn" style="background: #dda15e" name="updateCat" value="Update">
+        <!-- <button type="submit"  class="rounded-lg px-6 py-2" style="background: #dda15e" > Update </button> -->
+        <input type="submit"  class="rounded-lg px-6 py-2" style="background: #dda15e" name="updateCat"  value="Update">
         </form>
         <?php } ?>
+        </div>
+
+        <div>
+        <button onclick="goBack()" class="btn-back bg-[#dda15e] p-2 rounded-lg px-10">Back</button>
+        <script>
+        function goBack() {
+            window.history.back("");
+        }
+</script>
+        </div>
+
+
+        </div>
+        
     </div>
 
 </body>

@@ -36,6 +36,8 @@ session_start();
 
         <div class="main-container">
 
+       
+
 
             <?php        
                    
@@ -95,6 +97,15 @@ session_start();
                                             <a href="admin_update.php?<?php echo $_SESSION['admin_Id']; ?>">Update</a>
                                         </button>
                                         <?php endif; ?>
+
+                                         
+                                        <button onclick="goBack()" class="btn-back bg-[#d5bdaf] p-2 rounded-lg px-10">Back</button>
+                                            <script>
+                                            function goBack() {
+                                                window.history.back();
+                                            }
+                                    </script>
+        
                                     </div>
 
 

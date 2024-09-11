@@ -59,15 +59,22 @@ ob_end_flush();
         <div class="absolute mt-[-50px]">
             <h1 class="text-2xl font-bold px-3">CATEGORY</h1>
         </div>
-        <form method="POST" action="admin_book_home.php">
+        <div class="flex justify-between">
+            <div>
+            <form method="POST" action="admin_book_home.php">
 
-            <div class="flex justify-start gap-5 items-center">
-                <input type="text" class="rounded-lg w-50 p-1 px-3 py-1" placeholder="Add new Category" name="category"
-                    id="category" required>
-                <button class="bg-[#e6ccb2] border rounded-lg px-3 py-1" type="submit" style="background: #f5ebe0" name="addCategories">Add
-                </button>
+                <div class="flex justify-start gap-5 items-center">
+                    <input type="text" class="rounded-lg w-50 p-1 px-3 py-1" placeholder="Add new Category" name="category"
+                        id="category" required>
+                    <button class="bg-[#e6ccb2] border rounded-lg px-3 py-1" type="submit" style="background: #f5ebe0" name="addCategories">Add
+                    </button>
+                </div>
+                </form>
             </div>
-        </form>
+      
+
+        </div>
+        
 
         <div class="py-5">
             <?php $category = $crud->selectAllCategory(); ?>

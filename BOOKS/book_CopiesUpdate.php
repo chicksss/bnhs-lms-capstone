@@ -55,8 +55,8 @@ ob_end_flush();
 
             <?php if($result){ ?>
             <div>
-                <div class="p-2 rounded-lg bg-[#d5bdaf]">
-                    <b>Book: <?php echo $result['title']?></b>
+                <div class="p-2 rounded-lg bg-[#d5bdaf] ">
+                    <p class="w-[200px] truncate hover:text-clip">Book: <?php echo $result['title']?></p>
                 </div>
 
                 <img src="../BOOKS/book/<?php echo $result['image']; ?>" title="<?php echo $result['image']; ?>"

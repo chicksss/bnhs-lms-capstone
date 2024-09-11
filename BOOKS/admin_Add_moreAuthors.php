@@ -94,7 +94,7 @@ ob_end_flush();
                                     $result = $myAuthors->selectBooksByAuthorId($id);      
                                     if (!empty($result)) {
                                         ?>
-            <table class="p-2 text-left w-full" style="">
+             <table class="p-2 text-left" style="">
                 <caption class="p-2 text-left">
                     Category: &nbsp; &nbsp; &nbsp; &nbsp;
                     <?php if(isset($_GET['id'])){ ?>
@@ -111,7 +111,7 @@ ob_end_flush();
                 </caption>
                 <thead class="">
                     <tr class="bg-[#d5bdaf] ">
-                        <th class="px-6 p-2">Title</th>
+                        <th class="px-6 p-2  ">Title</th>
                         <th class="px-6 p-2">Add</th>
                     </tr>
 
@@ -119,7 +119,7 @@ ob_end_flush();
                     <?php foreach ($result as $book) : ?>
                 <tbody class="hover:hover:bg-[#e3d5ca]">
                     <tr>
-                        <td class="px-6 p-2"><?php echo htmlspecialchars($book['title']); ?></td>
+                        <td class="px-6 p-2 w-[50px] truncate hover:text-clip"><?php echo htmlspecialchars($book['title']); ?></td>
 
                         <td class="px-6 p-2">
                             <a href="add_more_authors.php?id=<?php echo $book['id']; ?>">
@@ -161,7 +161,7 @@ ob_end_flush();
                                 
                                 ?>
 
-            <table class="p-2 text-left w-full" style="">
+            <table class="p-2 text-left" style="">
                 <caption class="p-2 text-left">All Books</caption>
                 <thead class="bg-[#d5bdaf]">
                     <tr>
@@ -172,7 +172,7 @@ ob_end_flush();
                 <tbody>
                     <?php foreach ($Allresult as $book) : ?>
                     <tr class="hover:bg-[#e3d5ca]">
-                        <td class="px-6 p-2"><?php echo htmlspecialchars($book['title']); ?></td>
+                        <td class="p-2 w-[30px] truncate hover:text-clip"><?php echo htmlspecialchars($book['title']); ?></td>
                         <td class="px-6 p-2">
                             <a href="add_more_authors.php?id=<?php echo $book['id']; ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

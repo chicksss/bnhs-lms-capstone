@@ -67,7 +67,7 @@ ob_end_flush();
         <div class="flex justify-start gap-10 px-10 py-2">
             <?php if($result){ ?>
             <div>
-                <div class="bg-[#d5bdaf] p-2 rounded-lg py-2">
+                <div class="bg-[#d5bdaf] p-2 rounded-lg py-2 w-[300px] truncate hover:text-clip">
                     <?php echo "Title: ".$result['title'];  ?>
                 </div>
 

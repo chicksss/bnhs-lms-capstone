@@ -118,6 +118,8 @@ ob_end_flush();
                                                 <button type="submit" name="updateIMg" class="rounded-lg p-2 px-10"
                                                     style="background: #d5bdaf; color:black">
                                                     Update </button>
+
+                                                    
                                             </div>
 
                                         </div>
@@ -164,6 +166,13 @@ ob_end_flush();
                                                 style="background: #d5bdaf; color:black">
                                                 Update
                                             </button>
+
+                                            <button onclick="goBack()" class="btn-back bg-[#d5bdaf] p-2 rounded-lg px-10">Back</button>
+                                            <script>
+                                            function goBack() {
+                                                window.history.back();
+                                            }
+                                    </script>
                                         </div>
 
 

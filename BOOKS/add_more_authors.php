@@ -127,7 +127,14 @@ ob_end_flush();
             </div>
         </div>
 
-
+<div class="flex justify-end mr-20">
+<button onclick="goBack()" class="btn-back bg-[#dda15e] p-2 rounded-lg px-10">Back</button>
+        <script>
+        function goBack() {
+            window.history.back("");
+        }
+</script>
+</div>
 
         <div class="flex justify-evenly px-10 gap-2 py-3">
             <div class="card rounded-lg p-0 ">
@@ -155,7 +162,7 @@ ob_end_flush();
                     <input type="hidden" name="a_id" class="rounded-lg p-1" id="authorInput"
                         placeholder="Search for Authors.." title="Type Author">
 
-                    <div class="overflow-y-auto h-96" id="overflowTests">
+                    <div class="overflow-y-auto h-80" id="overflowTests">
                         <div class="w-full text-sm text-left rtl:text-right text-black py-2" id="myDIV">
                             <?php
                                 $listA = $crud->GetAllAuthors();
@@ -250,11 +257,11 @@ ob_end_flush();
                 <?php if ($result): ?>
                 <div class="grid gap-3">
                     <div class="bg-[#d5bdaf] px-[-20px] p-2">
-                        <label for="" class="text-1xl font-bold">Book: <?php echo $result['title']; ?></label>
+                        <p for="" class="text-1xl font-bold w-[300px] truncate hover:ellipsis">Book: <?php echo $result['title']; ?></p>
                     </div>
                     <div class="">
                         <img src="../BOOKS/book/<?php echo $result['image']; ?>" title="<?php echo $result['image']; ?>"
-                            class="h-[450px] w-[350px] rounded-lg shadow-lg">
+                            class="h-[400px] w-[300px] rounded-lg shadow-lg">
                     </div>
                 </div>
                 <?php endif; ?>

@@ -250,11 +250,11 @@ ob_end_flush();
                 <?php if ($result): ?>
                 <div class="grid gap-3">
                     <div class="bg-[#d5bdaf] px-[-20px] p-2">
-                        <label for="" class="text-1xl font-bold">Book: <?php echo $result['title']; ?></label>
+                        <p  class="w-[200px] truncate hover:text-clip">Book: <?php echo $result['title']; ?></p>
                     </div>
                     <div class="">
                         <img src="../BOOKS/book/<?php echo $result['image']; ?>" title="<?php echo $result['image']; ?>"
-                            class="h-[450px] w-[350px] rounded-lg shadow-lg">
+                            class="h-[400px] w-[300px] rounded-lg shadow-lg">
                     </div>
                 </div>
                 <?php endif; ?>

@@ -80,7 +80,7 @@ ob_end_flush();
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>ADD BOOK</title>
 </head>
 
 
@@ -107,7 +107,7 @@ ob_end_flush();
 
 
                     <label for="small-input" class="block text-sm font-medium font-black">Category:</label>
-                    <select class="p-1 rounded-lg border-gray-400 text-sm" style="width:550px" name="category_id">
+                    <select class="p-1 rounded-lg border-gray-400 text-sm" style="width:550px" name="category_id" required>
                         <option value="">Select a Category</option>
                         <?php 
                                     $categories = $crud->selectAllCategory();
@@ -213,7 +213,7 @@ ob_end_flush();
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Publisher:</label>
                     <input type="text"
                         class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        name="publisher" id="publisher" placeholder="Publisher" required>
+                        name="publisher" id="publisher" placeholder="Publisher">
 
                 </div>
 
@@ -221,76 +221,22 @@ ob_end_flush();
 
                    
                     <label for="small-input" class="block text-sm font-medium font-black">Add Book Cover:</label>
-                    <button id="btn">Show Image</button>
+                    <!-- <button id="btn">Show Image</button> -->
                     <input type="file" class="form-control-sm" name="image" id="image" accept=".jpg, .jpeg, .png"
-<<<<<<< HEAD
+
                         >
-                    <button id="btn" type="button">Default Image</button>
-=======
-                        >
->>>>>>> b7fa5dbb685a4d24d98bb998a7cf8f59d5eed5b3
+                    <!-- <button id="btn" type="button">Default Image</button> -->
+
+
                     <img alt="" style="" class="w-96 h-96 shadow-lg" id="imagePreview">
                 </div>
 
-<<<<<<< HEAD
-
-                <script>
-                const defaultImage = '../images/lis.jpg'; // Your default image path
-                const button = document.getElementById('btn');
-                const imagePreview = document.getElementById('imagePreview');
-                const input = document.getElementById('image');
-
-                // Set default image when button is clicked
-                button.addEventListener('click', () => {
-                    imagePreview.src = defaultImage; // Set the image source to default
-                    imagePreview.style.display = 'block'; // Make sure the image is visible
-                    input.value = ''; // Clear the file input to ensure no file is selected
-                });
-
-                // Update image preview when a new file is uploaded
-                input.addEventListener('change', (e) => {
-                    if (e.target.files && e.target.files[0]) {
-                        const reader = new FileReader();
-=======
-                
-                                <script>
-                const defaultImage = '../images/lis.jpg';  // Your image path
-                const button = document.getElementById('btn');
-                const imagePreview = document.getElementById('imagePreview');
-                
-                button.addEventListener('click', () => {
-                    imagePreview.src = defaultImage;  // Set the image src
-                    imagePreview.style.display = 'block';  // Make the image visible
-                });
-            </script>
+ 
+ 
                             
+ 
 
                 <script>
-                     const img = '../images/lis.jpg';
-             
-                window.addEventListener('DOMContentLoaded', () => {
-                    const image = document.getElementById('imagePreview');
-                    const input = document.getElementById('image');
-                   
-                    input.addEventListener('change', (e) => {
-                        if (e.target.files && e.target.files[0]) {
-                            const reader = new FileReader();
-                            reader.onload = (event) => {
-                                image.src = event.target.result;
-                            };
->>>>>>> b7fa5dbb685a4d24d98bb998a7cf8f59d5eed5b3
-
-                        reader.onload = (event) => {
-                            imagePreview.src = event.target.result; // Set the uploaded image as the preview
-                            imagePreview.style.display = 'block'; // Make sure the image is visible
-                        };
-
-                        reader.readAsDataURL(e.target.files[0]);
-                    }
-                });
-                </script>
-
-                <!-- <script>
 
                         window.addEventListener('DOMContentLoaded', () => {
                             const image = document.getElementById('imagePreview');
@@ -308,7 +254,7 @@ ob_end_flush();
                                 }
                             });
                         });
-                </script> -->
+                </script>
             </div>
 
 
