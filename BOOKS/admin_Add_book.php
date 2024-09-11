@@ -218,13 +218,21 @@ ob_end_flush();
                 </div>
 
                 <div class="w-[600px]">
+
+                   
                     <label for="small-input" class="block text-sm font-medium font-black">Add Book Cover:</label>
+                    <button id="btn">Show Image</button>
                     <input type="file" class="form-control-sm" name="image" id="image" accept=".jpg, .jpeg, .png"
-                        value="Add Book Cover">
+<<<<<<< HEAD
+                        >
                     <button id="btn" type="button">Default Image</button>
+=======
+                        >
+>>>>>>> b7fa5dbb685a4d24d98bb998a7cf8f59d5eed5b3
                     <img alt="" style="" class="w-96 h-96 shadow-lg" id="imagePreview">
                 </div>
 
+<<<<<<< HEAD
 
                 <script>
                 const defaultImage = '../images/lis.jpg'; // Your default image path
@@ -243,6 +251,34 @@ ob_end_flush();
                 input.addEventListener('change', (e) => {
                     if (e.target.files && e.target.files[0]) {
                         const reader = new FileReader();
+=======
+                
+                                <script>
+                const defaultImage = '../images/lis.jpg';  // Your image path
+                const button = document.getElementById('btn');
+                const imagePreview = document.getElementById('imagePreview');
+                
+                button.addEventListener('click', () => {
+                    imagePreview.src = defaultImage;  // Set the image src
+                    imagePreview.style.display = 'block';  // Make the image visible
+                });
+            </script>
+                            
+
+                <script>
+                     const img = '../images/lis.jpg';
+             
+                window.addEventListener('DOMContentLoaded', () => {
+                    const image = document.getElementById('imagePreview');
+                    const input = document.getElementById('image');
+                   
+                    input.addEventListener('change', (e) => {
+                        if (e.target.files && e.target.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                                image.src = event.target.result;
+                            };
+>>>>>>> b7fa5dbb685a4d24d98bb998a7cf8f59d5eed5b3
 
                         reader.onload = (event) => {
                             imagePreview.src = event.target.result; // Set the uploaded image as the preview
@@ -288,7 +324,7 @@ ob_end_flush();
                 </button>
             </div>
 
-    </div>
+        </div>
 
 
     <!-- <input type="submit" class="btn" style="background:#dda15e" name="adbook" value="Add Book"> -->
