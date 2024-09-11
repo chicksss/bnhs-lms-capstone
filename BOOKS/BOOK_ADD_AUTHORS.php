@@ -176,7 +176,7 @@ ob_end_flush();
                             <?php
                                 $listA = $crud->GetAllAuthors();
                                  foreach ($listA as $author): ?>
-                            <div class="author-row flex justify-between mx-2 border border 2">
+                            <div class="author-row flex justify-between mx-2 border border-black">
                                 <div class="author-name p-2 ">
                                     <p class="text-xl text-left"><?php echo $author['author_name']; ?></p>
                                 </div>
