@@ -215,10 +215,14 @@ if(isset($_POST['login'])){
         <aside class="fixed w-[450px] h-full" aria-label="Sidebar">
 
             <div class="ml-[120px] py-10">
-                <?php if($result): ?>
-                <img src="../BOOKS/book/<?= $result['image']; ?>" title="<?= $result['image']; ?>"
-                    class="w-50 h-[300px] ml-5 shadow-lg rounded-lg">
-                <?php endif; ?> <br> <br>
+              
+                    <div class="w-48">
+                    <?php if($result): ?>
+                    <img src="../BOOKS/book/<?= $result['image']; ?>" title="<?= $result['image']; ?>"
+                    class=" h-[300px] ml-5 shadow-lg rounded-lg">
+                        <?php endif; ?> <br> <br>
+                    </div>
+               
 
                 <!-- Button trigger modal -->
                 <button type="button" style="background-color: #DDA15E; border-radius: 24px;" class="ml-5 p-2 w-[200px]"

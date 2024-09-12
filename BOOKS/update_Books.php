@@ -32,6 +32,10 @@ if (isset($_POST['adbook'])) {
     
 
     $crud->updateBook($id,$title, $status_name,$book_date_published,$synopsis,$book_isbn,$publisher);
+    echo "<script>
+    alert('Book details successfully updated');
+    window.location.href = 'admin_bookList.php';
+    </script>";
 }
 
 
@@ -45,7 +49,13 @@ if (isset($_POST['updateIMg'])) {
         try {
             $updatedImage = $crud->updatedImage($image, $id, $selectedTable);
             if ($updatedImage) {
-                header("Location: admin_bookList.php");
+
+                echo "<script>
+                alert('Image successfully updated');
+                window.location.href = 'admin_bookList.php';
+                </script>";
+                
+                //header("Location: admin_bookList.php");
                 exit();
             } else {
                 echo "Error updating image.";

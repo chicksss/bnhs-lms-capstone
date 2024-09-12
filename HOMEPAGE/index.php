@@ -329,7 +329,7 @@ if(isset($_POST['login'])){
                  class="w-96 h-96" title="<?php echo $res['image']; ?>">
          
 
-<<<<<<< HEAD
+ 
         <div class="w-78">
             <h3 class="font-bold text-2xl py-2">
                 <?php echo $res['title']; ?>
@@ -341,18 +341,15 @@ if(isset($_POST['login'])){
                 &nbsp;<?php echo $res['synopsis']; ?>
             </p>
             <p id="seeMore_<?php echo $res['id']; ?>" style="color: blue; cursor: pointer; display: none;">See more...</p>
-=======
+ 
                     <?php 
                         $allResults = $crud->featuredBook(); 
                         foreach ($allResults as $res) {
                             ?>
                     
-                        <img src="../BOOKS/book/<?php echo $res['image']; ?>" title="<?php echo $res['image']; ?>"
-                            class="h-96 w-96" >
+                       
 
-                     
->>>>>>> b7fa5dbb685a4d24d98bb998a7cf8f59d5eed5b3
-
+      
             <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var synopsis = document.getElementById('synopsis_<?php echo $res['id']; ?>');
@@ -387,7 +384,8 @@ if(isset($_POST['login'])){
                 </div>
             </div>
         </div>
-        <?php } ?>
+        <?php } 
+        }?>
     </div>
 </div>
 

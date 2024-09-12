@@ -128,8 +128,8 @@ if (isset($_POST['submit'])) {
                     <div class="card px-20 py-6"
                         style="background-image: url(../images/books.png); background-size: cover; background-repeat; no-repeat">
                         <div class="row">
-                            <div class="px-6">
-                                <h4 class="font-bold">Books</h4>
+                            <div class="flex justify-start">
+                                <h4 class="font-bold text-left">Books</h4>
                             </div>
 
                         </div>

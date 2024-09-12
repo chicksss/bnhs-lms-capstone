@@ -325,7 +325,8 @@ public function updateBook($id,$title, $status_name,$book_date_published,$synops
             return false; 
         }
     } catch (PDOException $e) {
-        header("Location: admin_bookList.php");
+        //header("Location: admin_bookList.php");
+        
     }
 }
 
